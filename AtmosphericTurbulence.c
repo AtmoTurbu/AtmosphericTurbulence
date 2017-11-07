@@ -47,7 +47,7 @@ int clock_gettime(int clk_id, struct timespec *t){
 
 
 
-#include "CLIcore.h"
+#include "CommandLineInterface/CLIcore.h"
 #include "COREMOD_memory/COREMOD_memory.h"
 #include "COREMOD_arith/COREMOD_arith.h"
 
@@ -345,6 +345,12 @@ int_fast8_t AtmosphericTurbulence_Test_LinPredictor_cli()
 }
 
 
+
+void __attribute__ ((constructor)) libinit_AtmosphericTurbulence()
+{
+	init_AtmosphericTurbulence();
+	printf(" ...... Loading module %s\n", __FILE__);
+}
 
 int init_AtmosphericTurbulence()
 {
